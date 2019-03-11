@@ -1,1 +1,125 @@
+const audioClip = { //Change Clips
+    q: "http://s1download-universal-soundbank.com/mp3/sounds/372.mp3",
+  
+    w: "http://s1download-universal-soundbank.com/mp3/sounds/1802.mp3",
+  
+    e: "http://s1download-universal-soundbank.com/mp3/sounds/1965.mp3",
+  
+    a: "http://s1download-universal-soundbank.com/mp3/sounds/1971.mp3",
+  
+    s: "http://s1download-universal-soundbank.com/mp3/sounds/1974.mp3",
+  
+    d: "http://s1download-universal-soundbank.com/mp3/sounds/1972.mp3",
+  
+    z: "http://s1download-universal-soundbank.com/mp3/sounds/9338.mp3",
+  
+    x: "http://s1download-universal-soundbank.com/mp3/sounds/12416.mp3",
+  
+    c: "http://s1download-universal-soundbank.com/mp3/sounds/403.mp3"
+}
+
+const Messages = { //change Messages
+    q: "Boom",
+    w: "Pow",
+    e: "Slap!",
+    a: "Bowrr",
+    s: "Ooooh",
+    d: "Phew!",
+    z: "Tssss",
+    x: "Pum",
+    c: "Ka-ching"
+}
+keys = ["q","w","e","a","s","d","z","x","c"]
+
+class Application extends React.Component { //change Application
+   constructor(props) {
+    super(props);
+    this.state = {
+      message: "Press any Key", // change Slap me!
+    }
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.playSound = this.playSound.bind(this);
+  }
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyPress);
+  }
+handleKeyPress(event) {
+    let foo = event.key.toLowerCase() //change foo
+    if (keys.indexOf(foo) > -1) {
+        
+      this.playSound(event.key);
+      
+    }
+  }
+
+  playSound(key) {
+    this.setState({
+      message: Messages[key]
+    })
+    document.getElementById(key.toUpperCase()).play()    
+  }
+  render() {
+    return (
+      <div id ="drum-machine">
+        <h1>Drum Machine</h1>
+        <div id="drum-pad">
+          
+          <button className="drum-pad" id="Boom" onClick={() => this.playSound("q")}>
+            Q
+            <audio src={audioClip.q} className="clip" id="Q" />
+          </button>
+          
+          <button className="drum-pad" id="Pow" onClick={() => this.playSound("w")}>
+            W
+            <audio src={audioClip.w} className="clip" id="W" />
+          </button>
+          
+          <button className="drum-pad" id="Slap!" onClick={() => this.playSound("e")}>
+            E
+            <audio src={audioClip.e} className="clip" id="E" />
+          </button>
+          
+          <button className="drum-pad" id="Bow" onClick={() => this.playSound("a")}>
+            A
+            <audio src={audioClip.a} className="clip" id="A" />
+          </button>
+          
+          <button className="drum-pad" id="Ooooh" onClick={() => this.playSound("s")}>
+            S
+            <audio src={audioClip.s} className="clip" id="S" />
+          </button>
+          
+          <button className="drum-pad" id="Phew!" onClick={() => this.playSound("d")}>
+            D
+            <audio src={audioClip.d} className="clip" id="D" />
+          </button>
+          
+          <button className="drum-pad" id="Tssss" onClick={() => this.playSound("z")}>
+            Z
+            <audio src={audioClip.z} className="clip" id="Z" />
+          </button>
+          
+          <button className="drum-pad" id="Pum" onClick={() => this.playSound("x")}>
+            X
+            <audio src={audioClip.x} className="clip" id="X" />
+          </button>
+          
+          <button className="drum-pad" id="Ka-ching" onClick={() => this.playSound("c")}>
+           C
+           <audio src={audioClip.c} className="clip" id="C" />
+          </button>
+        </div>
+        
+        <div id="display">
+          {this.state.message}
+        </div>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+    <Application />,
+    document.getElementById('root')
+  );
 
