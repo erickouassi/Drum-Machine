@@ -18,3 +18,8 @@
     "aA sS dD"
     "zZ xX cC";
 }
+}
+#display{
+   border-style: solid;
+  border-width: 0.7px;
+}
