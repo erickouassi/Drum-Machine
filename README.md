@@ -1,2 +1,1 @@
-# Drum-Machine
-https://codepen.io/erickouassi/full/WmEevK
+Objective: Build a CodePen.io app that is functionally similar to this: https://codepen.io/freeCodeCamp/full/MJyNMd.
